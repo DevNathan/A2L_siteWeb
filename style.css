@@ -1,0 +1,273 @@
+@font-face {
+	font-family: 'comfortaa-bold';
+	src : url('source/font/ComfortaaBold/comfortaa-bold-webfont.eot');
+	src : url('source/font/ComfortaaBold/comfortaa-bold-webfont.eot?#iefix') format('embedded-opentype'),
+			url('source/font/ComfortaaBold/comfortaa-bold-webfont.woff2') format('woff2'),
+			url('source/font/ComfortaaBold/comfortaa-bold-webfont.ttf') format('truetype'),
+			url('source/font/ComfortaaBold/comfortaa-bold-webfont.svg#typeWriter') format('svg');
+}
+
+@font-face {
+	font-family: 'comfortaa-light';
+	src : url('source/font/ComfortaaLight/comfortaa-light-webfont.eot');
+	src : url('source/font/ComfortaaLight/comfortaa-light-webfont.eot?#iefix') format('embedded-opentype'),
+			url('source/font/ComfortaaLight/comfortaa-light-webfont.woff2') format('woff2'),
+			url('source/font/ComfortaaLight/comfortaa-light-webfont.ttf') format('truetype'),
+			url('source/font/ComfortaaLight/comfortaa-light-webfont.svg#typeWriter') format('svg');
+}
+
+@font-face {
+	font-family: 'comfortaa-regular';
+	src : url('source/font/ComfortaaRegular/comfortaa-regular-webfont.eot');
+	src : url('source/font/ComfortaaRegular/comfortaa-regular-webfont.eot?#iefix') format('embedded-opentype'),
+			url('source/font/ComfortaaRegular/comfortaa-regular-webfont.woff2') format('woff2'),
+			url('source/font/ComfortaaRegular/comfortaa-regular-webfont.ttf') format('truetype'),
+			url('source/font/ComfortaaRegular/comfortaa-regular-webfont.svg#typeWriter') format('svg');
+}
+
+
+body
+{
+	background-image:url("source/background.jpg");
+	background-attachment: fixed;
+}
+
+header
+{
+	background: rgb(255, 255, 255);
+	width: 70%;
+	margin: auto;
+	box-shadow: 5px 5px 5px black;
+	padding-left: 5px;
+    padding-right: 5px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px; 
+}
+
+@media all and (max-device-width: 480px) /* Pour les mobiles */
+{
+  header
+  {
+    width: 90%;
+  }
+ }
+
+header p
+ {
+	 text-align:center;
+	 color:rgb(1, 70, 182);
+     font-family: comfortaa-regular, Arial, sans-serif;
+     font-size:1.5em;
+ }
+
+ header img
+ {
+     border-radius: 20px;
+     width:10%;
+ }
+
+
+section
+{
+	background: rgba(255,255,255);
+	width: 70%;
+	margin: auto;
+	box-shadow: 5px 5px 5px black;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+@media all and (max-device-width: 480px) /* Pour les mobiles */
+{
+  section
+  {
+    width: 90%;
+  }
+ }
+
+ .h1
+{
+	color:rgb(0, 65, 170);
+	/*font-weight: bold;*/
+	font-size:5em;
+	text-align: center;
+	font-family: comfortaa-bold, Arial, sans-serif;
+	/*text-shadow: 2px 2px 2px black;*/
+}
+
+.h1error
+{
+	color:red;
+	/*font-weight: bold;*/
+	font-size:5em;
+	text-align: center;
+	font-family: comfortaa-bold, Arial, sans-serif;
+	text-shadow: 2px 2px 2px black;
+}
+
+h2
+{
+	color:rgb(98, 180, 228);
+	font-family: comfortaa-light, Arial, sans-serif;
+	font-size:1em;
+	font-style: italic;
+}
+
+a
+{
+	color:rgb(153,51,102);
+	/*font-weight: bold;*/
+	text-decoration: none;
+}
+
+a:hover 
+{
+	text-decoration: underline;
+
+}
+
+#connexion {
+	display: flex;
+
+}
+
+.elementConnexion:nth-child(1) 
+{
+	flex: 1.5;
+}
+
+.elementConnexion:nth-child(2)
+{
+	flex: 1;
+}
+
+section p
+{
+	font-family: comfortaa-regular, Arial, sans-serif;
+	color:rgb(98, 180, 228);
+	font-size:3em;
+}
+
+.input
+{
+	border: 2px solid rgb(98, 180, 228);
+  	border-radius: 20px;
+  	height:40px;
+  	width:300px;
+  	font-family: comfortaa-light,Arial, sans-serif;
+	color:rgb(98, 180, 228);
+	font-size:0.6em;
+}
+
+.inputError
+{
+	border: 3px solid rgb(255, 63, 63);
+  	border-radius: 20px;
+  	height:40px;
+  	width:300px;
+  	font-family: comfortaa-light, Arial, sans-serif;
+	color:rgb(98, 180, 228);
+	font-size:0.6em;
+}
+
+.connexionButton
+{
+	border: 3px solid rgb(98, 180, 228);
+  	border-radius: 20px;
+  	height:60px;
+  	width:250px;
+  	font-family: comfortaa-bold, Arial, sans-serif;
+	color:rgb(98, 180, 228);
+	font-size:2em;
+	margin: auto;
+}
+
+h3
+{
+	font-family: comfortaa-bold, Arial, sans-serif;
+	color:rgb(0, 64, 116);
+	/*text-shadow: 1px 1px 1px black;*/
+	font-size:1.5em;
+}
+
+h4
+{
+	color:rgb(98, 180, 228);
+	font-family: comfortaa-light, Arial, sans-serif;
+	font-style:italic;
+}
+
+footer
+{
+	background: rgb(255,255,255);
+	width: 70%;
+	margin: auto;
+	box-shadow: 5px 5px 5px black;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px; 
+}
+
+@media all and (max-device-width: 480px) /* Pour les mobiles */
+{
+  footer
+  {
+    width: 90%;
+  }
+ }
+
+#footer
+{
+	display: flex;
+}
+
+.elementFooter
+{
+	flex:1;
+}
+
+.elementFooter p 
+{
+	font-family: comfortaa-regular, Arial, sans-serif;
+	color:rgb(98, 180, 228);
+	font-size:0.9em;
+}
+
+footer p a
+{
+	font-size:0.9em;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
