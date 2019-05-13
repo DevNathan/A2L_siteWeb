@@ -1,0 +1,276 @@
+/*MODIFIÉ*/
+@font-face {
+	font-family: 'comfortaa-bold';
+	src : url('font/ComfortaaBold/comfortaa-bold-webfont.eot');
+	src : url('font/ComfortaaBold/comfortaa-bold-webfont.eot?#iefix') format('embedded-opentype'),
+			url('font/ComfortaaBold/comfortaa-bold-webfont.woff2') format('woff2'),
+			url('font/ComfortaaBold/comfortaa-bold-webfont.ttf') format('truetype'),
+			url('font/ComfortaaBold/comfortaa-bold-webfont.svg#typeWriter') format('svg');
+}
+
+@font-face {
+	font-family: 'comfortaa-light';
+	src : url('font/ComfortaaLight/comfortaa-light-webfont.eot');
+	src : url('font/ComfortaaLight/comfortaa-light-webfont.eot?#iefix') format('embedded-opentype'),
+			url('font/ComfortaaLight/comfortaa-light-webfont.woff2') format('woff2'),
+			url('font/ComfortaaLight/comfortaa-light-webfont.ttf') format('truetype'),
+			url('font/ComfortaaLight/comfortaa-light-webfont.svg#typeWriter') format('svg');
+}
+
+@font-face {
+	font-family: 'comfortaa-regular';
+	src : url('font/ComfortaaRegular/comfortaa-regular-webfont.eot');
+	src : url('font/ComfortaaRegular/comfortaa-regular-webfont.eot?#iefix') format('embedded-opentype'),
+			url('font/ComfortaaRegular/comfortaa-regular-webfont.woff2') format('woff2'),
+			url('font/ComfortaaRegular/comfortaa-regular-webfont.ttf') format('truetype'),
+			url('font/ComfortaaRegular/comfortaa-regular-webfont.svg#typeWriter') format('svg');
+}
+
+
+a
+{
+	color:rgb(153,51,102);
+	text-decoration: none;
+}
+
+a:hover 
+{
+	text-decoration: underline;
+
+}
+
+body
+{
+    background-image:url("background.jpg");
+    background-attachment: fixed;
+}
+
+header
+{
+	background: rgb(255, 255, 255);
+	width: 70%;
+	margin: auto;
+	box-shadow: 5px 5px 5px black;
+	padding-left: 5px;
+    padding-right: 5px;
+    padding-top:5px;
+    padding-bottom: 5px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px; 
+}
+
+@media all and (max-device-width: 480px) /* Pour les mobiles */
+{
+  header
+  {
+    width: 90%;
+  }
+ }
+
+header p
+ {
+     text-align:center;
+ }
+
+ header .logo
+ {
+     border-radius: 20px;
+     width:20%;
+ }
+
+ header .liste
+ {
+     width:18%;
+ }
+
+ .elementHeader:nth-child(1)
+ {
+     flex:2;
+ }
+
+ .elementHeader:nth-child(2)
+ {
+     flex:2;
+ }
+
+ #header
+ {
+     display: flex;
+ }
+ 
+ .elementHeader
+ {
+     flex:1;
+ }
+
+section
+{
+    background: rgba(255,255,255);
+	width: 70%;
+    margin: auto;
+    margin-top:3px;
+	box-shadow: 5px 5px 5px black;
+	padding-left: 5px;
+    padding-right: 5px;
+}
+
+@media all and (max-device-width: 480px) /* Pour les mobiles */
+{
+  section
+  {
+    width: 90%;
+  }
+ }
+
+ .h1
+ {
+     color: rgb(1, 70, 182);
+     font-family: comfortaa-bold, Arial, sans-serif;
+     text-align:center;
+     font-size:3em;
+     text-decoration: underline;
+ }
+
+ p
+ {
+     color:rgb(1, 70, 182);
+     font-family: comfortaa-regular, Arial, sans-serif;
+     font-size:1.5em;
+ }
+
+ p strong
+ {
+    color:rgb(98, 180, 228);
+    font-family: comfortaa-regular, Arial, sans-serif;
+    font-size:1em;
+    font-weight: normal;
+ }
+
+ p a 
+ {
+    font-family: comfortaa-light, Arial, sans-serif;
+ }
+
+ .pdp
+ {
+     text-align:center;
+     width: 90%;
+ }
+
+ .logo
+ {
+     border-radius: 20px;
+ }
+
+ footer
+{
+	background: rgb(255, 255, 255);
+	width: 70%;
+	margin: auto;
+	box-shadow: 5px 5px 5px black;
+	padding-left: 5px;
+    padding-right: 5px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px; 
+}
+
+@media all and (max-device-width: 480px) /* Pour les mobiles */
+{
+  footer
+  {
+    width: 90%;
+  }
+ }
+
+#footer
+{
+	display: flex;
+}
+
+.elementFooter
+{
+	flex:1;
+}
+
+.elementFooter p
+{
+	font-family: comfortaa-regular, Arial, sans-serif;
+	color:rgb(98, 180, 228);
+    font-size:0.9em;
+}
+
+footer p a
+{
+	font-size:0.9em;
+
+}
+
+/*
+//      Section pour la liste adhérent
+//
+//
+//
+//
+*/
+
+.lien
+{
+    color:blue;
+    font-family: comfortaa-regular, Arial, sans-serif;
+    font-size:1.5em;
+}
+
+#li
+{
+    display:flex;
+}
+
+.liElement
+{
+    flex:1;
+}
+
+.classe
+{
+    color:rgb(0, 0, 184);
+    font-family: comfortaa-regular, Arial, sans-serif;
+    font-size:1.5em;
+}
+
+.statut
+{
+    color:rgb(145, 145, 153);
+    font-family: comfortaa-regular, Arial, sans-serif;
+    font-size:1.5em;
+}
+
+.searchBar
+{
+    color:blue;
+    font-family: comfortaa-regular, Arial, sans-serif;
+    font-size:0.5em;
+    width : 200px;
+    height : 20px;
+    margin-left:5px;
+    border-radius: 10px;
+}
+
+/*
+//
+//
+// POUR LA FICHE ADHÉRENT D'UN AUTRE ADHÉRENT
+//
+//
+*/
+
+.pointFidelite
+{
+    border: 1px solid rgb(98, 180, 228);
+  	border-radius: 20px;
+  	height:30px;
+  	width:200px;
+  	font-family: comfortaa-bold, Arial, sans-serif;
+	color:rgb(98, 180, 228);
+	font-size:1em;
+	margin: auto;
+}
