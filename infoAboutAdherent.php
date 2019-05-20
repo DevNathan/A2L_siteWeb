@@ -1,10 +1,11 @@
 <?php
 session_start();
-$nom = $_SESSION['NomAdmin'];
+$nomAdmin = $_SESSION['NomAdmin'];
 $prenom = $_SESSION['PrenomAdmin'];
 $mdp = $_SESSION['MdpAdmin'];
+$statutAdmin = $_SESSION['Statut'];
 
-$nomPrenom = $nom . ' ' . $prenom;
+$nomPrenom = $nomAdmin . ' ' . $prenom;
 
 $nomAdherent = $_GET['NomAdherent'];
 $dateNaissanceAdherent = $_GET['DateNaissance'];
@@ -49,6 +50,7 @@ if($mdp != "" && $nomPrenom != ""){
             $classe = $arrayData[0]['Classe'];
             $statut = $arrayData[0]['Statut'];
             $pointsFidelite = $arrayData[0]['PointFidelite'];
+            $haveCodeTemporaire = $arrayData[0]['HaveCodeTemporaire?'];
 
 
             $listeDate = explode("/", $dateNaissance);
@@ -86,7 +88,7 @@ if($mdp != "" && $nomPrenom != ""){
             <html>
                 <head>
                 <meta charset="utf-8">
-                <title>Fiche adhérent</title>
+                <title>Fiche adhérent de l'A2L</title>
                 <link rel="stylesheet" href="source/styleFicheAdherent.css"/>
                 <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
                 </head>
@@ -125,6 +127,43 @@ if($mdp != "" && $nomPrenom != ""){
                                 <input type="hidden" name="idAdherent" value="<?PHP echo $id;?>"/>
                             </form>
                             <p><?PHP echo '<img src="'.$QRcode.'">'; ?></p>
+                            <?PHP
+                                if($statut != "Adhérent" && ($statutAdmin == "Développeur" || $statutAdmin == "Super-admin")){
+                                    ?><div id="codeButton"><?PHP
+                                    if($haveCodeTemporaire == "false"){
+                                        ?>
+                                            <form id="New" action="source/validerCodeTemporaire.php" method="post">
+                                                <input type="hidden" name="actionAsked" value="new"/>
+                                                <input type="hidden" name="id" value="<?PHP echo $id;?>"/>
+                                                <input type="hidden" name="url" value="https://a2l-jl.com/infoAboutAdherent.php?NomAdherent=<?PHP echo $nomAdherent;?>&DateNaissance=<?PHP echo $dateNaissanceAdherent; ?>"/>
+                                            </form>
+                                            <div class="codeButtonElement">
+                                                <p><a href="#" onclick='document.forms["New"].submit()'>Générer un code temporaire</a></p>
+                                            </div>
+                                            
+                                        <?PHP
+                                    } else if($_POST['CodeTemporaire'] == ""){ ?>
+                                    <div class="codeButtonElement">
+                                        <form id="Suppr" action="source/validerCodeTemporaire.php" method="post">
+                                            <input type="hidden" name="actionAsked" value="suppr"/>
+                                            <input type="hidden" name="id" value="<?PHP echo $id;?>"/>
+                                            <input type="hidden" name="url" value="https://a2l-jl.com/infoAboutAdherent.php?NomAdherent=<?PHP echo $nomAdherent;?>&DateNaissance=<?PHP echo $dateNaissanceAdherent; ?>"/>
+                                        </form>
+                                        <form id="SupprAndReplace" action="source/validerCodeTemporaire.php" method="post">
+                                            <input type="hidden" name="actionAsked" value="supprAndReplace"/>
+                                            <input type="hidden" name="id" value="<?PHP echo $id;?>"/>
+                                            <input type="hidden" name="url" value="https://a2l-jl.com/infoAboutAdherent.php?NomAdherent=<?PHP echo $nomAdherent;?>&DateNaissance=<?PHP echo $dateNaissanceAdherent; ?>"/>
+                                        </form>
+                                        <p><a href="#" onclick='document.forms["Suppr"].submit()'>Supprimer le code temporaire déjà actif</a></p>
+                                        <p><a href="#" onclick='document.forms["SupprAndReplace"].submit()'>Supprimer et générer un nouveau code temporaire</a></p>
+                                    </div>
+                                    <?PHP } ?>
+                                    <div class="codeButtonElement">
+                                                <p><a href="#" class="info" onclick="alert('Ce code est généré aléatoirement et doit être transmis à l\'admin concerné afin qu\'il puisse créer un mot de passe ou le réinitiliser\n\n⚠︎⚠︎⚠︎ATTENTION⚠︎⚠︎⚠︎\nGénérer un code suffit à le rendre valide. En générer un nouveau désactive le précédent. Ce code restera valide jusqu\'à son utilisation s\'il n\'est pas re-généré.\nUne fois que vous quitterez cette page vous ne pourrez plus voir le code. Il faudra donc en créer un nouveau. Même si vous n\'avez plus accès à son contenu le code restera valide quand vous aurez quitté la page')">Bah oui mais c'est quoi ?</a></p>
+                                            </div>
+                                        </div>
+                                <?PHP }
+                            ?>
                             <p><a href="homePageAdmin.php" title="Retour à la page de connexion" onclick='<?PHP /*session_destroy();*/?>'>Déconnexion</a></p>
                         </article>
                     </section>
@@ -134,7 +173,7 @@ if($mdp != "" && $nomPrenom != ""){
 					            <p><a href="href="mailto:nathanstchepinsky@gmail.com title="Signaler un bug"> Signaler un bug</a></p>
 				            </div>
 				            <div class="elementFooter">
-					            <p><a href="" title"Aide">Qu'est ce que l'A2L ?</a></p>
+					            <p><a href="" title="Aide">Qu'est ce que l'A2L ?</a></p>
 				            </div>
 				            <div class="elementFooter">
                                 <p>Ce site web, et l'application on été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>

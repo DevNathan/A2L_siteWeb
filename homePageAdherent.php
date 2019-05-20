@@ -1,14 +1,10 @@
 <?php
 /*// Données à envoyer sous la forme d'un array
 // A part l'URL, et éventuellement les options, il n'y aurait que ce tableau à modifier
-$post = array(
-    'Nom' => 'Stchepinsky Nathan',
-    'DateNaissance' => '14/11/2002',
-);
- 
+
 $data = http_build_query($post);
 $content = file_get_contents(
-    'http://localhost:8888/infoAdherent.php',
+    'http://localhost:8888/api/infoAdherent.php',
     FALSE,
     stream_context_create(
         array(
@@ -21,6 +17,9 @@ $content = file_get_contents(
     )
 );
 var_dump($content);*/
+session_start();
+$_SESSION = array();
+session_destroy();
 
 $error = htmlspecialchars($_POST["error"]);
 
@@ -31,7 +30,7 @@ $error = htmlspecialchars($_POST["error"]);
 	<head>
 		<meta charset="utf-8">
 		<title>A2L connexion adhérents</title>
-		<link rel="stylesheet" href="style.css"/>
+		<link rel="stylesheet" href="source/style.css"/>
 		<link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
 	</head>
 
@@ -43,12 +42,13 @@ $error = htmlspecialchars($_POST["error"]);
 		<section>
 			<article>
 				<?PHP
-					if($error != ""){?>
+					if($error != ""){
+						sleep(1);?>
 						<h1 class="h1error"><?PHP echo $error; ?></h1>
 					<?PHP } else { ?>
 						<h1 class="h1">Chères adhérents de l'A2L, bienvenue</h1>
 					<?PHP } ?>
-				<h2>Cette version web est une version restreinte de l'application A2L, disponible pour tous, en attendant la sortie de l'application sur android. L'application pour iOS est déjà <a href="" title="Accéder à l'application iOS de l'A2L">disponible</a>!!</h2>
+				<h2>Cette version web est une version restreinte de l'application A2L, disponible pour tous, en attendant la fin de son élaboration. L'application pour iOS est déjà <a href="" title="Accéder à l'application iOS de l'A2L">disponible</a>!!</h2>
 			</article>
 			<article>
 				<form method="post" action="ficheAdherent.php">
@@ -98,13 +98,13 @@ $error = htmlspecialchars($_POST["error"]);
 		<footer>
 			<div id="footer">
 				<div class="elementFooter">
-					<p><a href="href="mailto:nathanstchepinsky@gmail.com title="Signaler un bug"> Signaler un bug</a></p>
+					<p><a href="mailto:nathanstchepinsky@gmail.com" title="Signaler un bug"> Signaler un bug</a></p>
 				</div>
 				<div class="elementFooter">
-					<p><a href="" title"Aide">Qu'est ce que l'A2L ?</a></p>
+					<p><a href="" title="Aide">Qu'est ce que l'A2L ?</a></p>
 				</div>
 				<div class="elementFooter">
-					<p>Ce site web, et l'application on été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
+					<p>Ce site web, et l'application ont été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
 				</div>
 			</div>
 		</footer>

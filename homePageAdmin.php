@@ -1,4 +1,7 @@
 <?php
+session_start();
+$_SESSION = array();
+session_destroy();
 $error = htmlspecialchars($_POST["error"]);
 ?>
 
@@ -7,7 +10,7 @@ $error = htmlspecialchars($_POST["error"]);
 	<head>
 		<meta charset="utf-8">
 		<title>A2L connexion admin</title>
-		<link rel="stylesheet" href="style.css"/>
+		<link rel="stylesheet" href="source/style.css"/>
 		<link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
 
 	</head>
@@ -20,12 +23,13 @@ $error = htmlspecialchars($_POST["error"]);
 		<section>
 			<article>
 			<?PHP
-					if($error != ""){?>
+					if($error != ""){
+						sleep(1);?>
 						<h1 class="h1error"><?PHP echo $error; ?></h1>
 					<?PHP } else { ?>
-						<h1 class="h1">Chère membre du bureau, bienvenue</h1>
+						<h1 class="h1">Chères membres du bureau, bienvenue</h1>
 					<?PHP } ?>
-				<h2>Cette version web est une version restreinte de l'application A2L, disponible pour tous, en attendant la sortie de l'application sur android. L'application pour iOS est déjà <a href="" title="Accéder à l'application iOS de l'A2L">disponible</a>!!</h2>
+				<h2>Cette version web est une version restreinte de l'application A2L, disponible pour tous, en attendant la fin de son élaboration.  L'application pour iOS est déjà <a href="" title="Accéder à l'application iOS de l'A2L">disponible</a>!!</h2>
 			</article>
 			<article>
 				<div id="connexion">
@@ -37,8 +41,10 @@ $error = htmlspecialchars($_POST["error"]);
 									
 									<label for="Prénom">Prénom</label> : <input type="text" name="PrenomField" id="Prénom" placeholder="Prénom" class="inputError"/>
 								<?PHP } else {
-									?> <label for="Prénom">Prénom</label> : <input type="text" name="PrenomField" id="Prénom" placeholder="Prénom" class="input"/> <?PHP
-									}?>
+									?> <label for="Prénom">Prénom</label> : <input type="text" name="PrenomField" id="PrenomField" placeholder="Prénom" class="input"/> <?PHP
+									}
+									?>
+									
 							</p>
 						</div>
 						<div class="elementConnexion">
@@ -67,17 +73,17 @@ $error = htmlspecialchars($_POST["error"]);
 			</article>
 			<article>
 				<h4>Si vous avez perdu votre mot de passe ou que vous n'en avez pas alors pas de bol ......</h4>
-				<h4>Seule les applications sont autorisées à modifer des mots de passes pour l'instant ;)</h4>
+				<h4>Allez je suis sympa ... Rendez-vous <a href="reinitialiseMotDePasse.php">ici</a> ;)</h4>
 				<h3>Je suis adhérent et je comprends rien du tout :( <a href="homePageAdherent.php" title="Page de connexion pour les adhérents">Connecte toi ici alors</a></h3>
 			</article>
 		</section>
 		<footer>
 			<div id="footer">
 				<div class="elementFooter">
-					<p><a href="href="mailto:nathanstchepinsky@gmail.com title="Signaler un bug"> Signaler un bug</a></p>
+					<p><a href=mailto:nathanstchepinsky@gmail.com title="Signaler un bug"> Signaler un bug</a></p>
 				</div>
 				<div class="elementFooter">
-					<p><a href="" title"Aide">Qu'est ce que l'A2L ?</a></p>
+					<p><a href="" title="Aide">Qu'est ce que l'A2L ?</a></p>
 				</div>
 				<div class="elementFooter">
 					<p>Ce site web, et l'application on été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>

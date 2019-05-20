@@ -1,12 +1,12 @@
 <?php
-$nom = $_POST['NomAdmin'];
-$prenom = $_POST['PrenomAdmin'];
-$mdp = $_POST['MdpHashed'];
+session_start();
+$nom = $_SESSION['NomAdmin'];
+$prenom = $_SESSION['PrenomAdmin'];
+$mdp = $_SESSION['MdpAdmin'];
+$recherche = $_GET['recherche'];
 
 $nomPrenom = $nom . ' ' . $prenom;
 
-echo $nomPrenom;
-echo $mdp;
 
 if($mdp != "" && $nomPrenom != ""){
      //OK on lance l'assaut au serveur
@@ -21,7 +21,7 @@ if($mdp != "" && $nomPrenom != ""){
      
         $data = http_build_query($post);
         $content = file_get_contents(
-            'http://localhost:8888/returnAllData.php',
+            'http://a2l-jl.com/api/returnAllData.php',
             FALSE,
             stream_context_create(
              array(
@@ -39,25 +39,48 @@ if($mdp != "" && $nomPrenom != ""){
 
         if($content.is_array() && (json_decode( $content, true)[0]['id'] != "")){ // connexion réussie
             $arrayData = json_decode( $content, true);
-            //echo json_decode( $content, true)[0]['id'];
-            //echo $content;
-            //var_dump($arrayData);
-            for($i = 0; $i < $arrayData.count; $i++) {
-                $id[$i] = $arrayData[$i]['id'];
-                $nom[$i] = $arrayData[$i]['Nom'];
-                $dateNaissance[$i] = $arrayData[$i]['DateNaissance'];
-                $classe[$i] = $arrayData[$i]['Classe'];
-                $statut[$i] = $arrayData[$i]['Statut'];
-                $pointsFidelite[$i] = $arrayData[$i]['PointFidelite'];
+            $count = 0;
+            
+            if($recherche == ""){
+                foreach($arrayData as $i){
+               
+                    $nomArray[$count] = $i['Nom'];
+                    //echo $i['Nom'];
+                    //echo $count;
+                    //echo $nom[1];
+                    $dateNaissance[$count] = $i['DateNaissance'];
+                    $classe[$count] = $i['Classe'];
+                    $statut[$count] = $i['Statut'];
+                    $pointsFidelite[$count] = $i['PointFidelite'];
+                    $count ++;
+                   }
+            } else {
+                foreach($arrayData as $i){
+                    if(strpos($i['Nom'], $recherche) !== false || strpos($i['Statut'], $recherche) !== false || strpos($i['Classe'], $recherche) !== false){
+                        $nomArray[$count] = $i['Nom'];
+                        $dateNaissance[$count] = $i['DateNaissance'];
+                        $classe[$count] = $i['Classe'];
+                        $statut[$count] = $i['Statut'];
+                        $pointsFidelite[$count] = $i['PointFidelite'];
+                        $count ++;
+                    }
+                    
+                    
+                   }
+                   
             }
-
+            
+           
+            
+           
+           
             ?>
             <!DOCTYPE html>
             <html>
                 <head>
                 <meta charset="utf-8">
-                <title>Fiche adhérent</title>
-                <link rel="stylesheet" href="styleFicheAdherent.css"/>
+                <title>Liste adhérents</title>
+                <link rel="stylesheet" href="source/styleFicheAdherent.css"/>
                 <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
                 </head>
 
@@ -65,12 +88,17 @@ if($mdp != "" && $nomPrenom != ""){
                     <header>
                         <div id="header">
                             <div class="elementHeader">
-                                <form id="afficheFiche" method="POST" action="ficheAdmin.php">
-                                    <input type="hidden" name="">
-                                </form>
-                                    <p><a href="homePageAdmin.php"><img src="source/logo.JPG" alt="logo de l'A2L" title="Se déconnecter" class="logo"/></a></p>
-                                    <p><a href="infoAdmin.php" title="Accéder à ma fiche admin" action>Fiche administrateur de l'A2L</a></p>
+                                <form action="ficheAdmin.php" method ="POST", id="Connexion">
+                                    <input type="hidden" value="SESSION_STARTED" name="NomField"/>
                                 
+                                    <p><a href="#.php"><img src="source/logo.JPG" alt="logo de l'A2L" title="Se déconnecter" class="logo" onclick="document.getElementById('Connexion').submit();"/></a></p>
+                                    <p><a href="#" title="Accéder à ma fiche admin" onclick="document.getElementById('Connexion').submit();">Fiche administrateur de l'A2L</a></p>
+                                    </form>
+                                    <script>
+                                    function onClick(){
+                                        document.forms["connexion"].submit();
+                                    }
+                                    </script>
                             </div>
                             <div class="elementHeader">
                             <p><a href="listeAdherent.php"><img src="source/liste.jpg" alt="Image d'une liste et un crayon" title="Acceder à la liste adhérent" class="liste"/></a></p>
@@ -80,15 +108,37 @@ if($mdp != "" && $nomPrenom != ""){
                     </header>
                     <section>
                         <article>
-                            <ol>
+                            <form method="get" action="listeAdherent.php">
+                                <p>Rechercher :<input type="text" name="recherche" placeholder="Nom, prenom, classe, statut ..." value="<?PHP echo $recherche; ?>" class="searchBar"/><input value="Rechercher" type="submit"/></p>
+                            </form>
+                            <ul>
                             <?php
-                                for($i = 0;$i < $nom.count ; $i++){
+                                for($count = 0; $count<count($nomArray);$count++){
+                                    
                                     ?>
-                                        <li><a href=""><?PHP echo $nom[$i];?></a></li>
+                                    
+                                        <p><li>
+                                        <div id = "li">
+                                            <div class="liElement">
+                                                <a href="infoAboutAdherent.php?NomAdherent=<?PHP echo $nomArray[$count];?>&DateNaissance=<?PHP echo $dateNaissance[$count]?>" class="lien" onclick="" id="Nom"><?PHP echo $nomArray[$count];?></a>
+                                                
+                                                    
+                                            </div>
+                                            <div class="liElement">
+                                                <strong class="classe"> <?PHP echo $classe[$count]?></strong>
+                                            </div>
+                                            <div class="liElement">
+                                                <span class="statut"><?PHP echo $statut[$count]; ?></span>
+                                            </div>
+                                        </div>
+                                        </li></p>
+
+                                        
                                     <?PHP
                                 }
                             ?>
-                            </ol>
+                            </ul>
+                            <p><a href="homePageAdmin.php" title="Retour à la page de connexion">Déconnexion</a></p>
                         </article>
                     </section>
                     <footer>
@@ -100,7 +150,7 @@ if($mdp != "" && $nomPrenom != ""){
 					            <p><a href="" title"Aide">Qu'est ce que l'A2L ?</a></p>
 				            </div>
 				            <div class="elementFooter">
-                                <p>Ce site web, et l'application on été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
+                                <p>Ce site web, et l'application ont été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
 				            </div>
 			            </div>
 		            </footer>
@@ -114,7 +164,7 @@ if($mdp != "" && $nomPrenom != ""){
             <head>
                 <meta charset="utf-8">
                 <title>Informations incorrects</title>
-                <link rel="stylesheet" href="style.css"/>
+                <link rel="stylesheet" href="source/style.css"/>
                 <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
             </head>
     
@@ -123,7 +173,7 @@ if($mdp != "" && $nomPrenom != ""){
                     <input type="hidden" value="Oups.... Mot de passe incorrect" name="error">
                 </form>
                 <script>
-                    //document.forms["connexion"].submit();
+                    document.forms["connexion"].submit();
                 </script>
             </body>
             </html>
@@ -136,16 +186,16 @@ if($mdp != "" && $nomPrenom != ""){
             <head>
                 <meta charset="utf-8">
                 <title>Informations incorrects</title>
-                <link rel="stylesheet" href="style.css"/>
+                <link rel="stylesheet" href="source/style.css"/>
                 <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
             </head>
     
             <body>
                 <form action="homePageAdmin.php" method ="POST", id="connexion">
-                    <input type="hidden" value="Oups ... Il faut être membre du bureau pour se connecter ici ? ;)" name="error">
+                    <input type="hidden" value="Oups ... On dirait bien que tu n'es pas autorisé a faire tout ça .... " name="error">
                 </form>
                 <script>
-                    //document.forms["connexion"].submit();
+                    document.forms["connexion"].submit();
                 </script>
             </body>
             </html>
@@ -159,16 +209,16 @@ if($mdp != "" && $nomPrenom != ""){
 	    <head>
 		    <meta charset="utf-8">
 		    <title>Echec de connexion</title>
-		    <link rel="stylesheet" href="style.css"/>
+		    <link rel="stylesheet" href="source/style.css"/>
 		    <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
 	</head>
 
 	<body>
         <form action="homePageAdmin.php" method ="POST", id="connexion">
-            <input type="hidden" value="Oups ... n'oublie pas de tout remplir !" name="error">
+            <input type="hidden" value="Oups ! Votre session a expiré ..." name="error">
         </form>
         <script>
-            //document.forms["connexion"].submit();
+            document.forms["connexion"].submit();
         </script>
     </body>
     </html>

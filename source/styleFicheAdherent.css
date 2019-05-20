@@ -75,7 +75,7 @@ header p
  header .logo
  {
      border-radius: 20px;
-     width:20%;
+     width:10%;
  }
 
  header .liste
@@ -262,6 +262,21 @@ footer p a
 //
 //
 */
+
+#codeButton
+{
+	display: flex;
+}
+
+.codeButtonElement
+{
+	flex:1;
+}
+
+.info
+{
+    color:gray;
+}
 
 .pointFidelite
 {

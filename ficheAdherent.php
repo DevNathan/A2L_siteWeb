@@ -1,7 +1,15 @@
 <?php
+session_start();
 $nomSend = htmlspecialchars($_POST["NomField"]);
 $prenomSend = htmlspecialchars($_POST["PrenomField"]);
 $dateSend = htmlspecialchars($_POST["DateNaissanceField"]);
+
+
+if ($nomSend == ""){
+    $nomSend = htmlspecialchars($_SESSION['NomAdherent']);
+    $prenomSend = htmlspecialchars($_SESSION['PrenomAdherent']);
+    $dateSend = $_SESSION['DateNaissance'];
+}
 
 $nomPrenom = $nomSend . ' ' . $prenomSend;
 
@@ -13,7 +21,7 @@ $QRcodeText = $nomPrenom . '%23' . $dateSend . '%23' . $key;
 
 $QRcode = 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=' . $QRcodeText . '&choe=UTF-8';
 
-
+sleep(1);
 
 if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
         //OK on lance l'assaut au serveur
@@ -28,7 +36,7 @@ if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
      
         $data = http_build_query($post);
         $content = file_get_contents(
-            'http://localhost:8888/infoAdherent.php',
+            'https://a2l-jl.com/api/infoAdherent.php',
             FALSE,
             stream_context_create(
              array(
@@ -41,12 +49,14 @@ if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
          )
         );
 
+        $arrayData = json_decode( $content, true);
         
-
-
-        if($content.is_array() && (json_decode( $content, true)[0]['id'] != "D")){ // connexion réussie
-            $arrayData = json_decode( $content, true);
-            echo json_decode( $content, true)[0]['id'];
+        
+        if(is_numeric($arrayData[0]['id'])) { // connexion réussie
+            $_SESSION['NomAdherent'] = $nomSend;
+            $_SESSION['PrenomAdherent'] = $prenomSend;
+            $_SESSION['DateNaissance'] = $dateSend;
+         
             //echo $content;
             //var_dump($arrayData);
             $id = $arrayData[0]['id'];
@@ -62,7 +72,7 @@ if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
             );
             $data = http_build_query($post);
             $content = file_get_contents(
-                'http://localhost:8888/loadImage.php',
+                'http://a2l-jl.com/api/loadImage.php',
                 FALSE,
                 stream_context_create(
                 array(
@@ -75,37 +85,53 @@ if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
                 )
             );
             $imageData = json_decode($content); 
+            
             ?>
             <!DOCTYPE html>
             <html>
                 <head>
                 <meta charset="utf-8">
                 <title>Fiche adhérent</title>
-                <link rel="stylesheet" href="styleFicheAdherent.css"/>
+                <link rel="stylesheet" href="source/styleFicheAdherent.css"/>
                 <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
                 </head>
 
                 <body>
                     <header>
-                        <p><a href="homePageAdherent.php"><img src="source/logo.JPG" alt="logo de l'A2L" title="Se déconnecter"/></a></p>
+                        <p><a href="homePageAdherent.php"><img src="source/logo.JPG" alt="logo de l'A2L" title="Se déconnecter" class="logo"/></a></p>
                         <p>Fiche d'adhérent de l'A2L</p>
                     </header>
                     <section>
                         <article>
                             <h1 class="h1"> <?php echo $nom; ?></h1>
-                            <p class="pdp"><?PHP echo '<img src="data:image/jpeg;base64,' . $imageData . '" class="logo">'; ?></p>
+                            <?PHP if($imageData != "none"){ ?>
+                                <p class="pdp"><?PHP echo '<img src="data:image/jpeg;base64,' . $imageData . '" class="logo">'; ?></p>
+                            <?PHP } else { ?>
+                                <form action="source/uploadImage.php" method="POST" id="image" enctype="multipart/form-data">
+                                    <p>Pas de photo ...... Choisis en une toi même !!</p>
+                                    <input type="file" id="pdp" name="photo" id="photo"/>
+                                    <input type="hidden" name="id" value="<?PHP echo $id;?>"/>
+                                    <input type="hidden" name="url" value="https://a2l-jl.com/ficheAdherent.php"/>
+                                   <input type="submit" value="C'est mon dernier mot, je valide cette image"/>
+                                </form>
+                                    
+                            <?PHP }
+                            ?>
+                            
                             <p>Date de naissance : <strong> <?PHP echo $dateNaissance; ?> </strong> </p>
                             <p>Classe : <strong> <?PHP echo $classe; ?> </strong> </p>
                             <p>Statut: <strong> <?PHP echo $statut; ?> </strong> </p>
                             <p>Points de fidélité : <strong> <?PHP echo $pointsFidelite; ?> </strong> </p>
                             <p><?PHP echo '<img src="'.$QRcode.'">'; ?></p>
+                            
+                            
                             <p><a href="homePageAdherent.php" title="Retour à la page de connexion">Déconnexion</a></p>
                         </article>
                     </section>
                     <footer>
 			            <div id="footer">
 				            <div class="elementFooter">
-					            <p><a href="href="mailto:nathanstchepinsky@gmail.com title="Signaler un bug"> Signaler un bug</a></p>
+					            <p><a href="mailto:nathanstchepinsky@gmail.com" title="Signaler un bug"> Signaler un bug</a></p>
 				            </div>
 				            <div class="elementFooter">
 					            <p><a href="" title"Aide">Qu'est ce que l'A2L ?</a></p>
@@ -125,7 +151,7 @@ if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
             <head>
                 <meta charset="utf-8">
                 <title>Informations incorrects</title>
-                <link rel="stylesheet" href="style.css"/>
+                <link rel="stylesheet" href="source/style.css"/>
                 <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
             </head>
     
@@ -147,7 +173,7 @@ if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
             <head>
                 <meta charset="utf-8">
                 <title>Informations incorrects</title>
-                <link rel="stylesheet" href="style.css"/>
+                <link rel="stylesheet" href="source/style.css"/>
                 <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
             </head>
     
@@ -171,7 +197,7 @@ if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
 	    <head>
 		    <meta charset="utf-8">
 		    <title>Echec de connexion</title>
-		    <link rel="stylesheet" href="style.css"/>
+		    <link rel="stylesheet" href="source/style.css"/>
 		    <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
 	</head>
 

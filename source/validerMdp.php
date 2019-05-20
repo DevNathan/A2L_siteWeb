@@ -41,7 +41,7 @@ if($nom !="" && $nom != "" && $codeTemporaire != ""){
             <html>
             <head>
                 <meta charset="utf-8">
-                <title>Informations incorrects</title>
+                <title>Informations incorrectes</title>
                 <link rel="stylesheet" href="source/style.css"/>
                 <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
             </head>
@@ -79,7 +79,7 @@ if($nom !="" && $nom != "" && $codeTemporaire != ""){
             <html>
             <head>
                 <meta charset="utf-8">
-                <title>Informations incorrects</title>
+                <title>Informations incorrectes</title>
                 <link rel="stylesheet" href="source/style.css"/>
                 <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
             </head>
@@ -102,7 +102,7 @@ if($nom !="" && $nom != "" && $codeTemporaire != ""){
             <html>
             <head>
                 <meta charset="utf-8">
-                <title>Informations incorrects</title>
+                <title>Informations incorrectes</title>
                 <link rel="stylesheet" href="source/style.css"/>
                 <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
             </head>
