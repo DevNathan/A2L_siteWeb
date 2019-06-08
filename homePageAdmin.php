@@ -27,9 +27,8 @@ $error = htmlspecialchars($_POST["error"]);
 						sleep(1);?>
 						<h1 class="h1error"><?PHP echo $error; ?></h1>
 					<?PHP } else { ?>
-						<h1 class="h1">Chères membres du bureau, bienvenue</h1>
+						<h1 class="h1">Connexion des membres du bureau</h1>
 					<?PHP } ?>
-				<h2>Cette version web est une version restreinte de l'application A2L, disponible pour tous, en attendant la fin de son élaboration.  L'application pour iOS est déjà <a href="" title="Accéder à l'application iOS de l'A2L">disponible</a>!!</h2>
 			</article>
 			<article>
 				<div id="connexion">
@@ -83,7 +82,7 @@ $error = htmlspecialchars($_POST["error"]);
 					<p><a href=mailto:nathanstchepinsky@gmail.com title="Signaler un bug"> Signaler un bug</a></p>
 				</div>
 				<div class="elementFooter">
-					<p><a href="" title="Aide">Qu'est ce que l'A2L ?</a></p>
+					<p><a href="" title="Aide">Un peu d'aide ?</a></p>
 				</div>
 				<div class="elementFooter">
 					<p>Ce site web, et l'application on été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>

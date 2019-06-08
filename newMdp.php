@@ -83,7 +83,7 @@ if($nomSend != "" && $prenomSend!="" && $codeTemporaire != ""){
 					            <p><a href="mailto:nathanstchepinsky@gmail.com" title="Signaler un bug"> Signaler un bug</a></p>
 				            </div>
 				            <div class="elementFooter">
-					            <p><a href="" title="Aide">Qu'est ce que l'A2L ?</a></p>
+					            <p><a href="" title="Aide">Un peu d'aide ?</a></p>
 				            </div>
 				            <div class="elementFooter">
                                 <p>Ce site web, et l'application ont été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>

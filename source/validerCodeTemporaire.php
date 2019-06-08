@@ -2,14 +2,14 @@
 session_start();
 $nomPrenomAdmin = $_SESSION['NomAdmin'] . ' ' . $_SESSION['PrenomAdmin'];
 $mdpSend = $_SESSION['MdpAdmin'];
+$id = $_SESSION['id'];
 
 $actionAsked = $_POST['actionAsked'];
 $idAdherent = $_POST['id'];
 $url = $_POST['url'];
-echo $actionAsked;
 
 
-if($actionAsked == 'new'){ // on veut un nouveau code
+if($actionAsked == 'new' || $actionAsked == "supprAndReplace"){ // on veut un nouveau code
     $newIntCode = random_int(0, 9999);
     if($newIntCode < 10){
         $newCode = '000' . $newIntCode;
@@ -20,6 +20,30 @@ if($actionAsked == 'new'){ // on veut un nouveau code
     } else {
         $newCode = $newIntCode;
     }
+    $post = array(
+        'idAdherent' => $idAdherent,
+        'CodeTemporaire' => $newCode,
+        'idAdmin' => $id,
+        'MdpAdmin' => $mdpSend,
+    );
+
+
+ 
+    $data = http_build_query($post);
+    $content = file_get_contents(
+        'https://a2l-jl.com/api/stockCodeTemporaire.php',
+        FALSE,
+        stream_context_create(
+         array(
+              'http' => array(
+                 'method' => 'POST',
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\nContent-Length: " . strlen($data) . "\r\n",
+                    'content' => $data,
+                )
+            )
+     )
+    );
+    
     ?>
         <!DOCTYPE html>
         <html>
@@ -40,7 +64,48 @@ if($actionAsked == 'new'){ // on veut un nouveau code
         </body>
         </html>
         <?PHP
+} else if ($actionAsked == "suppr"){ // on supprime le code temporaire
+    $post = array(
+        'idAdherent' => $idAdherent,
+        'CodeTemporaire' => "nil",
+        'idAdmin' => $id,
+        'MdpAdmin' => $mdpSend,
+    );
+    $data = http_build_query($post);
+    $content = file_get_contents(
+        'https://a2l-jl.com/api/stockCodeTemporaire.php',
+        FALSE,
+        stream_context_create(
+         array(
+              'http' => array(
+                 'method' => 'POST',
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\nContent-Length: " . strlen($data) . "\r\n",
+                    'content' => $data,
+                )
+            )
+     )
+    );
+    
+    ?>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <title>Générer un code confidentiel temporaire</title>
+            <link rel="stylesheet" href="source/style.css"/>
+            <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+        </head>
 
+        <body>
+            <form action="<?PHP echo $url?>" method ="POST", id="newCode">
+                <input type="hidden" value="<?PHP echo $newCode?>" name="CodeTemporaire">
+            </form>
+            <script>
+                document.forms["newCode"].submit();
+            </script>
+        </body>
+        </html>
+        <?PHP
 } else {
     if($id !="" && $mdpSend != ""){
         if(is_numeric($pointFidelite)){

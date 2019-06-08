@@ -48,6 +48,7 @@ if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
                 )
          )
         );
+        
 
         $arrayData = json_decode( $content, true);
         
@@ -84,6 +85,7 @@ if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
                     )
                 )
             );
+            var_dump($content);
             $imageData = json_decode($content); 
             
             ?>
@@ -106,17 +108,18 @@ if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
                             <h1 class="h1"> <?php echo $nom; ?></h1>
                             <?PHP if($imageData != "none"){ ?>
                                 <p class="pdp"><?PHP echo '<img src="data:image/jpeg;base64,' . $imageData . '" class="logo">'; ?></p>
+                                <p>Changer de photo de profil :</p>
                             <?PHP } else { ?>
-                                <form action="source/uploadImage.php" method="POST" id="image" enctype="multipart/form-data">
-                                    <p>Pas de photo ...... Choisis en une toi même !!</p>
-                                    <input type="file" id="pdp" name="photo" id="photo"/>
-                                    <input type="hidden" name="id" value="<?PHP echo $id;?>"/>
-                                    <input type="hidden" name="url" value="https://a2l-jl.com/ficheAdherent.php"/>
-                                   <input type="submit" value="C'est mon dernier mot, je valide cette image"/>
-                                </form>
+                                <p>Pas de photo ...... Choisis en une toi même !!</p>
+                            <?PHP } ?>
+                            <form action="source/uploadImage.php" method="POST" id="image" enctype="multipart/form-data">
                                     
-                            <?PHP }
-                            ?>
+                                <input type="file" id="pdp" name="photo" id="photo"/>
+                                <input type="hidden" name="id" value="<?PHP echo $id;?>"/>
+                                <input type="hidden" name="url" value="https://a2l-jl.com/ficheAdherent.php"/>
+                                <input type="submit" value="Valider !"/>
+                            </form>
+                            
                             
                             <p>Date de naissance : <strong> <?PHP echo $dateNaissance; ?> </strong> </p>
                             <p>Classe : <strong> <?PHP echo $classe; ?> </strong> </p>
@@ -134,7 +137,7 @@ if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
 					            <p><a href="mailto:nathanstchepinsky@gmail.com" title="Signaler un bug"> Signaler un bug</a></p>
 				            </div>
 				            <div class="elementFooter">
-					            <p><a href="" title"Aide">Qu'est ce que l'A2L ?</a></p>
+					            <p><a href="#" title="Aide">Un peu d'aide ?</a></p>
 				            </div>
 				            <div class="elementFooter">
 					            <p>Ce site web, et l'application on été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>

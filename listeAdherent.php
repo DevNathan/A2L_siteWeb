@@ -70,10 +70,7 @@ if($mdp != "" && $nomPrenom != ""){
                    
             }
             
-           
-            
-           
-           
+
             ?>
             <!DOCTYPE html>
             <html>
@@ -87,30 +84,36 @@ if($mdp != "" && $nomPrenom != ""){
                 <body>
                     <header>
                         <div id="header">
-                            <div class="elementHeader">
-                                <form action="ficheAdmin.php" method ="POST", id="Connexion">
-                                    <input type="hidden" value="SESSION_STARTED" name="NomField"/>
-                                
-                                    <p><a href="#.php"><img src="source/logo.JPG" alt="logo de l'A2L" title="Se déconnecter" class="logo" onclick="document.getElementById('Connexion').submit();"/></a></p>
-                                    <p><a href="#" title="Accéder à ma fiche admin" onclick="document.getElementById('Connexion').submit();">Fiche administrateur de l'A2L</a></p>
-                                    </form>
+                        <div class="elementHeader">
+                                <form action="ficheAdmin.php" method ="POST", id="connexion">
+                                    <input type="hidden" value="SESSION_STARTED" name="NomField">
+                                </form>
+                                    <p><a href="ficheAdmin.php"><img src="source/logo.JPG" alt="logo de l'A2L" title="Se déconnecter" class="logo"/></a></p>
+                                    <p><a href="ficheAdmin.php" title="Accéder à ma fiche admin" onclick='javascript.document.forms["connexion"].submit();'>Fiche administrateur de l'A2L</a></p>
                                     <script>
-                                    function onClick(){
-                                        document.forms["connexion"].submit();
-                                    }
+                                        function postData(){
+                                            
+                                        }
                                     </script>
                             </div>
                             <div class="elementHeader">
-                            <p><a href="listeAdherent.php"><img src="source/liste.jpg" alt="Image d'une liste et un crayon" title="Acceder à la liste adhérent" class="liste"/></a></p>
-                                <p>● Liste des adhérents</p>
+                            <p><img src="source/liste.jpg" alt="Image d'une liste et un crayon" title="Acceder à la liste adhérent" class="liste"/></p>
+                            <p>● Accéder à la liste des adhérents</p>
                             </div>
                         </div>
                     </header>
                     <section>
                         <article>
-                            <form method="get" action="listeAdherent.php">
-                                <p>Rechercher :<input type="text" name="recherche" placeholder="Nom, prenom, classe, statut ..." value="<?PHP echo $recherche; ?>" class="searchBar"/><input value="Rechercher" type="submit"/></p>
-                            </form>
+                            <div id="topBar">
+                                <div class="topBarElement">
+                                    <form method="get" action="listeAdherent.php">
+                                        <p>Rechercher :<input type="text" name="recherche" placeholder="Nom, prenom, classe, statut ..." value="<?PHP echo $recherche; ?>" class="searchBar"/><input value="Rechercher" type="submit"/></p>
+                                    </form>
+                                </div>
+                                <div class="topBarElement">
+                                    <p><a href="modificationFicheAdherent.php">Ajouter un nouvel adhérent</a></p>
+                                </div>
+                            </div>
                             <ul>
                             <?php
                                 for($count = 0; $count<count($nomArray);$count++){
@@ -142,18 +145,18 @@ if($mdp != "" && $nomPrenom != ""){
                         </article>
                     </section>
                     <footer>
-			            <div id="footer">
-				            <div class="elementFooter">
-					            <p><a href="href="mailto:nathanstchepinsky@gmail.com title="Signaler un bug"> Signaler un bug</a></p>
-				            </div>
-				            <div class="elementFooter">
-					            <p><a href="" title"Aide">Qu'est ce que l'A2L ?</a></p>
-				            </div>
-				            <div class="elementFooter">
+                        <div id="footer">
+                            <div class="elementFooter">
+                                <p><a href="mailto:nathanstchepinsky@gmail.com" title="Signaler un bug"> Signaler un bug</a></p>
+                            </div>
+                            <div class="elementFooter">
+                                <p><a href="" title="Aide">Un peu d'aide ?</a></p>
+                            </div>
+                            <div class="elementFooter">
                                 <p>Ce site web, et l'application ont été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
-				            </div>
-			            </div>
-		            </footer>
+                            </div>
+                        </div>
+                    </footer>
                 </body>
             </html>
             <?PHP

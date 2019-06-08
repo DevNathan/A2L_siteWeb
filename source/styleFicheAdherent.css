@@ -108,10 +108,13 @@ section
     background: rgba(255,255,255);
 	width: 70%;
     margin: auto;
-    margin-top:3px;
+    margin-top:5px;
+    margin-bottom: 14px;
 	box-shadow: 5px 5px 5px black;
 	padding-left: 5px;
     padding-right: 5px;
+    padding-top:0px;
+    padding-bottom: 5px;
 }
 
 @media all and (max-device-width: 480px) /* Pour les mobiles */
@@ -154,6 +157,7 @@ section
  .pdp
  {
      text-align:center;
+     margin:auto;
      width: 90%;
  }
 
@@ -255,6 +259,18 @@ footer p a
     border-radius: 10px;
 }
 
+#topBar
+{
+    display:flex;
+    justify-content: space-around;
+}
+
+#topBar:nth-child(2) p a
+{
+    color:green;
+}
+
+
 /*
 //
 //
@@ -288,4 +304,70 @@ footer p a
 	color:rgb(98, 180, 228);
 	font-size:1em;
 	margin: auto;
+}
+
+.modification
+{
+    font-family: comfortaa-bold, Arial, sans-serif;
+    color :rgb(98, 180, 228);
+    text-align:center;
+}
+
+
+/*
+//
+//
+//  MODIFICATIONS OU AJOUT D'UN ADHÉRENT (adherentInformations.php)
+//
+//
+*/
+
+.formulaire
+{
+    border-radius: 20px;
+    border-width:3px;
+    border-color:rgb(98, 180, 228);
+    font-family: comfortaa-light, Arial, sans-serif;
+    font-size:1em;
+    color:blue;
+}
+
+.validerFormulaire
+{
+    border-radius: 20px;
+    border-width:3px;
+    border-color:green;
+    font-family: comfortaa-light, Arial, sans-serif;
+    font-size:1em;
+    color:blue;
+}
+
+.titreModification
+{
+    
+    color: blue;
+    font-family: comfortaa-bold, Arial, sans-serif;
+    text-align:center;
+    font-size:3em;
+    text-decoration: underline;
+}
+
+.deleteButton
+{
+    text-align:center;
+    font-family: comfortaa-bold, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.deleteButton a
+{
+    color:red;
+}
+
+.error
+{
+    color: rgb(235, 3, 53);
+    font-family: comfortaa-bold, Arial, sans-serif;
+    text-align:center;
+    font-size:1.9em;
 }
