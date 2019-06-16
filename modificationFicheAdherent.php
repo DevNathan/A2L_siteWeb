@@ -28,7 +28,7 @@ if($mdp != "" && $nomPrenom != ""){
                 <meta charset="utf-8">
                 <title>Fiche adhérent de l'A2L</title>
                 <link rel="stylesheet" href="source/styleFicheAdherent.css"/>
-                <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+                <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
                 </head>
 
                 <body>
@@ -39,7 +39,7 @@ if($mdp != "" && $nomPrenom != ""){
                                 <form action="ficheAdmin.php" method ="POST", id="connexion">
                                     <input type="hidden" value="SESSION_STARTED" name="NomField">
                                 </form>
-                                    <p><a href="ficheAdmin.php"><img src="source/logo.JPG" alt="logo de l'A2L" title="Se déconnecter" class="logo"/></a></p>
+                                    <p><a href="ficheAdmin.php"><img src="source/images/logo.JPG" alt="logo de l'A2L" title="Se déconnecter" class="logo"/></a></p>
                                     <p><a href="ficheAdmin.php" title="Accéder à ma fiche admin" onclick='javascript.document.forms["connexion"].submit();'>Fiche administrateur de l'A2L</a></p>
                                     
                             </div>
@@ -53,24 +53,25 @@ if($mdp != "" && $nomPrenom != ""){
                         <article>
                         <h1 class="titreModification"><?PHP if($nomAdherent != ""){echo "Modifier les informations de " . $nomAdherent;}else{echo "Ajouter un nouvel adhérent";}?></h1>
                         <h2 class="error"><?PHP if($error != ""){echo "Une erreur est survenue. Vérifiez vos informations";}?></h2>
-                            <form action="source/validerModificationsAdherent.php" method="post">
-                                <p>Nom prénom : <input type="text" value="<?PHP echo $nomAdherent?>" class="formulaire" name="nom"/></p>
+                            <form action="source/validerModificationsAdherent.php" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="<?PHP echo $idAdherent;?>"/>
+                                <p>Nom prénom : <input type="text" value="<?PHP echo $nomAdherent?>" class="formulaire" name="nom" placeholder="!!!!! Nom + prénom !!!!!"/></p>
                                 <p class="pdp"><?PHP echo '<img src="data:image/jpeg;base64,' . $imageData . '" class="logo">';?></p>
-                                <p>Selectionner une nouvelle photo d'identité : 
-                                    <input type="file" id="pdp" name="photo" id="photo" />
-                                    <input type="hidden" name="id" value="<?PHP echo $idAdherent;?>"/>
-                                    <!--<input type="submit" value="Valider !"/>-->
+                                <p><?PHP if($error == ""){ echo "Selectionner une nouvelle photo d'identité :"; }else { echo "Il est possible, que suite à une erreur dans les données, la photo de profil ne charge pas. Cela ne veut pas dire pour autant qu'elle n'existe pas... Vous pouvez tout de même la modifier:";}?>
+                                <input type="file" id="pdp" name="photo" id="photo" />
                                 </p>
-                                <p>Date de naissance : <input type="text" name="dateNaissance" value="<?PHP echo $dateNaissanceAdherent?>" class="formulaire"/></p>
+                                <p>Date de naissance : <input type="text" name="dateNaissance" value="<?PHP echo $dateNaissanceAdherent?>" class="formulaire" placeholder="!!!!! dd/mm/yyyy !!!!!"/></p>
                                 <p>Classe : <input type="text" name="classe" value="<?PHP echo $classeAdherent?>" class="formulaire"/></p>
                                 <?PHP if($statutAdherent != "Développeur"){ ?>
                                 <p>Statut : <select name="statut" id="statut" class="formulaire">
                                     <option value="Adhérent" <?PHP if($statutAdherent == "Adhérent"){echo "selected";}?>>Adhérent</option>
                                     <option value="Membre du bureau" <?PHP if($statutAdherent == "Membre du bureau"){echo "selected";}?>>Membre du bureau</option>
                                     <option value="Super-admin" <?PHP if($statutAdherent == "Super-admin"){echo "selected";}?>>Super-admin</option>
-                                </select> <a href="#" onclick="helpClicked();" >?</a></p>
+                                </select> <a  onclick="helpClicked();" >?</a></p>
                                 <?PHP } else if($statutAdherent == "Développeur"){ ?>
-                                <p>Statut : <strong class="formulaire">Développeur</strong> <a href="#" onclick="helpClicked();" class="help">?</a></p>
+                                <p>Statut : <select name="statut" id="statut" class="formulaire">
+                                    <option value="Développeur" <?PHP if($statutAdherent == "Développeur"){echo "selected";}?>>Développeur</option>
+                                </select> <a onclick="helpClicked();" >?</a></p>
                                 <?PHP } ?>
                                 <script>
                                     function helpClicked(){
@@ -79,7 +80,49 @@ if($mdp != "" && $nomPrenom != ""){
                                 </script>
                                 <p style="text-align: center;"><input type="submit" value="<?PHP if($nomAdherent != ""){echo "Valider";}else{echo"Créer";} ?>" class="validerFormulaire" /*onclick="document.forms['image'].sumbit()"*/></p>
                             </form>
-                            <?PHP if($statutAdherent != "Développeur" && $nomAdherent != ""){echo "<p class=\"deleteButton\"><a href=\"#\" onclick=\"\">Supprimer cet adhérent</a></p>";}?>
+                            <?PHP if($statutAdherent != "Développeur" && $nomAdherent != ""){?> 
+                                    <div id="choixSuppression">
+                                        <div class="choixSuppressionElement">
+                                        <p id="deleteButton" class="deleteButton"><a id="cancel" style="color:green;" onclick="cancel();"></a></p>
+                                        </div>
+                                        <div class="choixSuppressionElement">
+                                            <p id="deleteButton" class="deleteButton"><a onclick="removeButtonClicked();" id="removeButton">Supprimer cet adhérent</a></p>
+                                        </div>
+                                        <div class="choixSuppressionElement"> 
+                                            <p id="deleteButton" class="deleteButton"><a id="remove" onclick="remove();"></a></p>
+                                        </div>
+                                    </div>
+                                        
+                                <?PHP } ?>
+                                <form action="source/validerRemoveAdherent.php" method="post" id="removeSelected">
+                                    <input type="hidden" name="id" value="<?PHP echo $idAdherent;?>"/>
+                                    <input type="hidden" name="Nom" value="<?PHP echo $nomAdherent;?>"/>
+                                    <input type="hidden" name="DateNaissance" value="<?PHP echo $dateNaissanceAdherent;?>"/>
+                                </form>
+                            <script>
+                                function removeButtonClicked(){
+                                    document.getElementById("cancel").textContent = "Annuler la suppression";
+                                    document.getElementById("remove").textContent = "Supprimer définitivement";
+                                    document.getElementById("removeButton").textContent = "";
+                                }
+
+                                function cancel(){
+                                    document.getElementById("cancel").textContent = "";
+                                    document.getElementById("remove").textContent = "";
+                                    document.getElementById("removeButton").textContent = "Supprimer cet adhérent";
+                                }
+
+                                function remove(){
+                                    document.getElementById("removeSelected").submit();
+                                }
+                            </script>
+                                <p style="text-align:center;">
+                                    <?PHP if($nomAdherent != ""){?>
+                                        <a href="infoAboutAdherent.php?NomAdherent=<?PHP echo $nomAdherent; ?>&DateNaissance=<?PHP echo $dateNaissanceAdherent; ?>">Retour à la fiche adhérent</a>
+                                    <?PHP } else {?>
+                                        <a href="listeAdherent.php">Retour à liste adhérent</a>
+                                    <?PHP } ?>
+                                </p>
                             <p><a href="homePageAdmin.php" title="Retour à la page de connexion" onclick='<?PHP /*session_destroy();*/?>'>Déconnexion</a></p>
                         </article>
                     </section>
@@ -89,7 +132,7 @@ if($mdp != "" && $nomPrenom != ""){
 			                    <p><a href="mailto:nathanstchepinsky@gmail.com" title="Signaler un bug"> Signaler un bug</a></p>
 				            </div>
 				            <div class="elementFooter">
-					            <p><a href="" title="Aide">Un peu d'aide ?</a></p>
+					            <p><a href="pageAide.php" title="Aide">Un peu d'aide ?</a></p>
 				            </div>
 				            <div class="elementFooter">
                                 <p>Ce site web, et l'application on été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
@@ -108,7 +151,7 @@ if($mdp != "" && $nomPrenom != ""){
 		    <meta charset="utf-8">
 		    <title>Echec de connexion</title>
 		    <link rel="stylesheet" href="source/style.css"/>
-		    <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+		    <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
 	</head>
 
 	<body>

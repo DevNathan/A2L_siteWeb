@@ -99,14 +99,14 @@ if($nomSend != "" && $prenomSend!="" && $mdpSend != ""){
                 <meta charset="utf-8">
                 <title>Fiche admin</title>
                 <link rel="stylesheet" href="source/styleFicheAdherent.css"/>
-                <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+                <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
                 </head>
 
                 <body>
                     <header>
                         <div id="header">
                             <div class="elementHeader">
-                                <p><a href="#"><img src="source/logo.JPG" alt="logo de l'A2L" title="Se déconnecter" class="logo"/></a></p>
+                                <p><a href="#"><img src="source/images/logo.JPG" alt="logo de l'A2L" title="Se déconnecter" class="logo"/></a></p>
                                 <p>● Fiche administrateur de l'A2L</p>
                             </div>
                             <div class="elementHeader">
@@ -146,7 +146,7 @@ if($nomSend != "" && $prenomSend!="" && $mdpSend != ""){
 					            <p><a href="mailto:nathanstchepinsky@gmail.com" title="Signaler un bug"> Signaler un bug</a></p>
 				            </div>
 				            <div class="elementFooter">
-					            <p><a href="" title="Aide">Un peu d'aide ?</a></p>
+					            <p><a href="pageAide.php" title="Aide">Un peu d'aide ?</a></p>
 				            </div>
 				            <div class="elementFooter">
                                 <p>Ce site web, et l'application ont été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
@@ -164,7 +164,7 @@ if($nomSend != "" && $prenomSend!="" && $mdpSend != ""){
                 <meta charset="utf-8">
                 <title>Informations incorrects</title>
                 <link rel="stylesheet" href="source/style.css"/>
-                <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+                <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
             </head>
     
             <body>
@@ -186,7 +186,7 @@ if($nomSend != "" && $prenomSend!="" && $mdpSend != ""){
                 <meta charset="utf-8">
                 <title>Informations incorrects</title>
                 <link rel="stylesheet" href="source/style.css"/>
-                <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+                <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
             </head>
     
             <body>
@@ -210,7 +210,7 @@ if($nomSend != "" && $prenomSend!="" && $mdpSend != ""){
 		    <meta charset="utf-8">
 		    <title>Echec de connexion</title>
 		    <link rel="stylesheet" href="source/style.css"/>
-		    <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+		    <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
 	</head>
 
 	<body>

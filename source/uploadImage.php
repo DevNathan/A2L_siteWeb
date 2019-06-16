@@ -108,7 +108,7 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
 		                <meta charset="utf-8">
 		                <title>Upload en cours ...</title>
 		                <link rel="stylesheet" href="source/style.css"/>
-                        <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+                        <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
                         <meta http-equiv="refresh" content="0.1;URL=<?PHP echo $url;?>">
                     </head>
                 </html><?PHP
@@ -121,7 +121,7 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
 		                <meta charset="utf-8">
 		                <title>Aucune image sélectionnée</title>
 		                <link rel="stylesheet" href="source/style.css"/>
-                        <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+                        <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
                         <meta http-equiv="refresh" content="0.1;URL=<?PHP echo $url;?>">
                     </head>
                     <body>
@@ -139,7 +139,7 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
 		                <meta charset="utf-8">
 		                <title>Image trop lourde</title>
 		                <link rel="stylesheet" href="source/style.css"/>
-                        <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+                        <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
                         <meta http-equiv="refresh" content="0.1;URL=<?PHP echo $url;?>">
                     </head>
                     <body>
@@ -157,7 +157,7 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
 		                <meta charset="utf-8">
 		                <title>Une erreur est survenue</title>
 		                <link rel="stylesheet" href="source/style.css"/>
-                        <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+                        <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
                         <meta http-equiv="refresh" content="0.1;URL=<?PHP echo $url;?>">
                     </head>
                     <body>

@@ -47,7 +47,7 @@ if($id !="" && $mdpSend != ""){
             <meta charset="utf-8">
             <title>Informations incorrects</title>
             <link rel="stylesheet" href="source/style.css"/>
-            <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+            <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
         </head>
 
         <body>
@@ -104,7 +104,7 @@ if($id !="" && $mdpSend != ""){
         <meta charset="utf-8">
         <title>Echec de connexion</title>
         <link rel="stylesheet" href="source/style.css"/>
-        <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+        <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
 </head>
 
 <body>

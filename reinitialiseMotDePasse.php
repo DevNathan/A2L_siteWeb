@@ -11,13 +11,13 @@ $error = htmlspecialchars($_POST["error"]);
 		<meta charset="utf-8">
 		<title>Réinitialiser mon mot de passe</title>
 		<link rel="stylesheet" href="source/style.css"/>
-		<link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+		<link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
 
 	</head>
 
 	<body>
 		<header>
-        	<p><a href="homePageAdherent.php"><img src="source/logo.JPG" alt="logo de l'A2L" title="Se déconnecter"/></a></p>
+        	<p><a href="homePageAdherent.php"><img src="source/images/logo.JPG" alt="logo de l'A2L" title="Se déconnecter"/></a></p>
         	<p>Créer/Réinitiliser mon mot de passe</p>
         </header>
 		<section>
@@ -83,7 +83,7 @@ $error = htmlspecialchars($_POST["error"]);
 					<p><a href=mailto:nathanstchepinsky@gmail.com title="Signaler un bug"> Signaler un bug</a></p>
 				</div>
 				<div class="elementFooter">
-					<p><a href="" title="Aide">Un peu d'aide ?</a></p>
+					<p><a href="pageAide.php" title="Aide">Un peu d'aide ?</a></p>
 				</div>
 				<div class="elementFooter">
 					<p>Ce site web, et l'application on été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>

@@ -51,7 +51,7 @@ if($actionAsked == 'new' || $actionAsked == "supprAndReplace"){ // on veut un no
             <meta charset="utf-8">
             <title>Générer un code confidentiel temporaire</title>
             <link rel="stylesheet" href="source/style.css"/>
-            <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+            <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
         </head>
 
         <body>
@@ -93,7 +93,7 @@ if($actionAsked == 'new' || $actionAsked == "supprAndReplace"){ // on veut un no
             <meta charset="utf-8">
             <title>Générer un code confidentiel temporaire</title>
             <link rel="stylesheet" href="source/style.css"/>
-            <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+            <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
         </head>
 
         <body>
@@ -145,7 +145,7 @@ if($actionAsked == 'new' || $actionAsked == "supprAndReplace"){ // on veut un no
                 <meta charset="utf-8">
                 <title>Informations incorrects</title>
                 <link rel="stylesheet" href="source/style.css"/>
-                <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+                <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
             </head>
     
             <body>
@@ -202,7 +202,7 @@ if($actionAsked == 'new' || $actionAsked == "supprAndReplace"){ // on veut un no
             <meta charset="utf-8">
             <title>Echec de connexion</title>
             <link rel="stylesheet" href="source/style.css"/>
-            <link rel="shortcut icon" type="image/x-icon" href="source/logo.JPG"/>
+            <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
     </head>
     
     <body>

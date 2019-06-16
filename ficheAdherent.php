@@ -113,14 +113,11 @@ if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
                                 <p>Pas de photo ...... Choisis en une toi même !!</p>
                             <?PHP } ?>
                             <form action="source/uploadImage.php" method="POST" id="image" enctype="multipart/form-data">
-                                    
                                 <input type="file" id="pdp" name="photo" id="photo"/>
                                 <input type="hidden" name="id" value="<?PHP echo $id;?>"/>
                                 <input type="hidden" name="url" value="https://a2l-jl.com/ficheAdherent.php"/>
                                 <input type="submit" value="Valider !"/>
                             </form>
-                            
-                            
                             <p>Date de naissance : <strong> <?PHP echo $dateNaissance; ?> </strong> </p>
                             <p>Classe : <strong> <?PHP echo $classe; ?> </strong> </p>
                             <p>Statut: <strong> <?PHP echo $statut; ?> </strong> </p>
