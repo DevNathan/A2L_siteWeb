@@ -51,7 +51,10 @@ if($nomSend != "" && $prenomSend!="" && $codeTemporaire != ""){
                 </head>
 
                 <body>
-                    <header>
+                <?PHP require("source/Class/EtatSite/etat_site.php");
+                $etatSite = new EtatSite();
+                ?>
+                <div id="maintenance" style="background:<?PHP echo $etatSite->getColor(); ?>;"><h1><?PHP echo $etatSite->getMessage(); ?></h1></div>                    <header>
                         
                         <p><a href="homePageAdmin.php"><img src=".JPG" alt="logo de l'A2L" title="Se déconnecter" class="logo"/></a></p>
                         <p>Créer ou réinitialiser votre mot de passe</p>

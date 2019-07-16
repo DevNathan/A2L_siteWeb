@@ -19,6 +19,8 @@ $key = ($listeDate[0] + $listeDate[1] + $listeDate[2]) % 10;
 
 $QRcodeText = $nomPrenom . '%23' . $dateSend . '%23' . $key; 
 
+
+
 $QRcode = 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=' . $QRcodeText . '&choe=UTF-8';
 
 sleep(1);
@@ -99,7 +101,10 @@ if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
                 </head>
 
                 <body>
-                    <header>
+                <?PHP require("source/Class/EtatSite/etat_site.php");
+                $etatSite = new EtatSite();
+                ?>
+                <div id="maintenance" style="background:<?PHP echo $etatSite->getColor(); ?>;"><h1><?PHP echo $etatSite->getMessage(); ?></h1></div>                    <header>
                         <p><a href="homePageAdherent.php"><img src="source/logo.JPG" alt="logo de l'A2L" title="Se déconnecter" class="logo"/></a></p>
                         <p>Fiche d'adhérent de l'A2L</p>
                     </header>
@@ -137,7 +142,7 @@ if($nomSend != "" && $prenomSend!="" && $dateSend != ""){
 					            <p><a href="#" title="Aide">Un peu d'aide ?</a></p>
 				            </div>
 				            <div class="elementFooter">
-					            <p>Ce site web, et l'application on été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
+					            <p>Ce site web, et l'application ont été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
 				            </div>
 			            </div>
 		            </footer>

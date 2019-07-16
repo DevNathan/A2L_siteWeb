@@ -34,6 +34,8 @@ body
 	background-attachment: fixed;
 }
 
+
+
 header
 {
 	background: rgba(255, 255, 255);
@@ -123,6 +125,27 @@ a
 	color:rgb(153,51,102);
 	/*font-weight: bold;*/
 	text-decoration: none;
+}
+#maintenance
+{
+    width : 100%;
+    margin-top:0%;
+    margin-left: 0%;
+    text-align: center;
+    color:white;
+    box-shadow: 5px 5px 5px black;
+    font-size:0.5em;
+    font-family: comfortaa-regular, Arial, sans-serif;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#etatSite
+{
+    font-size:2em;
+    color:white;
+    font-family: comfortaa-regular, Arial, sans-serif;
+    text-decoration: none;
 }
 
 a:hover 

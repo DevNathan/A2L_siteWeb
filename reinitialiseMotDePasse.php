@@ -16,7 +16,10 @@ $error = htmlspecialchars($_POST["error"]);
 	</head>
 
 	<body>
-		<header>
+	<?PHP require("source/Class/EtatSite/etat_site.php");
+                $etatSite = new EtatSite();
+                ?>
+                <div id="maintenance" style="background:<?PHP echo $etatSite->getColor(); ?>;"><h1><?PHP echo $etatSite->getMessage(); ?></h1></div>		<header>
         	<p><a href="homePageAdherent.php"><img src="source/images/logo.JPG" alt="logo de l'A2L" title="Se déconnecter"/></a></p>
         	<p>Créer/Réinitiliser mon mot de passe</p>
         </header>
@@ -86,7 +89,7 @@ $error = htmlspecialchars($_POST["error"]);
 					<p><a href="pageAide.php" title="Aide">Un peu d'aide ?</a></p>
 				</div>
 				<div class="elementFooter">
-					<p>Ce site web, et l'application on été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
+					<p>Ce site web, et l'application ont été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
 				</div>
 			</div>
 		</footer>

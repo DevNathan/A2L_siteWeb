@@ -18,7 +18,10 @@ $listeTitreSite = ["Que siginfie open source ?", "Comment participer au projet ?
 	</head>
 
 	<body>
-		<header>
+    <?PHP require("source/Class/EtatSite/etat_site.php");
+                $etatSite = new EtatSite();
+                ?>
+                <div id="maintenance" style="background:<?PHP echo $etatSite->getColor(); ?>;"><h1 id="etatSite"><?PHP echo $etatSite->getMessage(); ?></h1></div>		<header>
             <p><a href="index.php"><img src="source/images/logo.JPG" alt="logo de l'A2L" title="Se déconnecter" class="logo"/></a></p>
             <p>● Page d'aide</p>
             <p><a href="index.php"> < Retour</a></p>
@@ -109,7 +112,7 @@ $listeTitreSite = ["Que siginfie open source ?", "Comment participer au projet ?
 					<p><a href="#" title="Aide">Un peu d'aide ?</a></p>
 				</div>
 				<div class="elementFooter">
-					<p>Ce site web, et l'application on été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
+					<p>Ce site web, et l'application ont été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
 				</div>
 			</div>
 		</footer>

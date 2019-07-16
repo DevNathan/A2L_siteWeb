@@ -103,14 +103,17 @@ if($nomSend != "" && $prenomSend!="" && $mdpSend != ""){
                 </head>
 
                 <body>
-                    <header>
+                <?PHP require("source/Class/EtatSite/etat_site.php");
+                $etatSite = new EtatSite();
+                ?>
+                <div id="maintenance" style="background:<?PHP echo $etatSite->getColor(); ?>;"><h1><?PHP echo $etatSite->getMessage(); ?></h1></div>                    <header>
                         <div id="header">
                             <div class="elementHeader">
                                 <p><a href="#"><img src="source/images/logo.JPG" alt="logo de l'A2L" title="Se déconnecter" class="logo"/></a></p>
                                 <p>● Fiche administrateur de l'A2L</p>
                             </div>
                             <div class="elementHeader">
-                            <p><a href="listeAdherent.php" onclick='javascript.document.getElementById("afficheListe").submit()'><img src="source/liste.jpg" alt="Image d'une liste et un crayon" title="Acceder à la liste adhérent" class="liste"/></a></p>
+                            <p><a href="listeAdherent.php" onclick='javascript.document.getElementById("afficheListe").submit()'><img src="source/images/liste.jpg" alt="Image d'une liste et un crayon" title="Acceder à la liste adhérent" class="liste"/></a></p>
                             <p><a href="listeAdherent.php" title="Acceder à la liste adhérent">Accéder à la liste des adhérents</a></p>
                             </div>
                         </div>

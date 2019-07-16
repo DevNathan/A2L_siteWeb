@@ -87,12 +87,14 @@ if($mdp != "" && $nomPrenom != ""){
                 <meta charset="utf-8">
                 <title>Fiche adhérent de l'A2L</title>
                 <link rel="stylesheet" href="source/styleFicheAdherent.css"/>
-                <link rel="shortcut icon" type="image/x-icon" href="source/images/logo.JPG"/>
+                <link rel="shortcut icon" type="image/x-icon" href="soure/images/logo.JPG"/>
                 </head>
 
                 <body>
-                
-                    <header>
+                <?PHP require("source/Class/EtatSite/etat_site.php");
+                $etatSite = new EtatSite();
+                ?>
+                <div id="maintenance" style="background:<?PHP echo $etatSite->getColor(); ?>;"><h1><?PHP echo $etatSite->getMessage(); ?></h1></div>                    <header>
                         <div id="header">
                             <div class="elementHeader">
                                 <form action="ficheAdmin.php" method ="POST", id="connexion">
@@ -102,7 +104,7 @@ if($mdp != "" && $nomPrenom != ""){
                                     <p><a href="ficheAdmin.php" title="Accéder à ma fiche admin" onclick='javascript.document.forms["connexion"].submit();'>Fiche administrateur de l'A2L</a></p>
                             </div>
                             <div class="elementHeader">
-                            <p><a href="listeAdherent.php" onclick='javascript.document.getElementById("afficheListe").submit()'><img src="source/liste.jpg" alt="Image d'une liste et un crayon" title="Acceder à la liste adhérent" class="liste"/></a></p>
+                            <p><a href="listeAdherent.php" onclick='javascript.document.getElementById("afficheListe").submit()'><img src="source/images/liste.jpg" alt="Image d'une liste et un crayon" title="Acceder à la liste adhérent" class="liste"/></a></p>
                             <p><a href="listeAdherent.php" title="Acceder à la liste adhérent">Accéder à la liste des adhérents</a></p>
                             </div>
                         </div>
@@ -199,7 +201,7 @@ if($mdp != "" && $nomPrenom != ""){
 					            <p><a href="pageAide.php" title="Aide">Un peu d'aide ?</a></p>
 				            </div>
 				            <div class="elementFooter">
-                                <p>Ce site web, et l'application on été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
+                                <p>Ce site web, et l'application ont été developpés par <a href="http://nathanstchepinsky--nathans1.repl.co" title="Visiter le site du developpeur">Nathan</a></p>
 				            </div>
 			            </div>
 		            </footer>

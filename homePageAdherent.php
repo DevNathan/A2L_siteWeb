@@ -17,7 +17,21 @@ $error = htmlspecialchars($_POST["error"]);
 	</head>
 
 	<body>
-	<header>
+	<?PHP 
+	require("source/Class/EtatSite/etat_site.php");
+                $etatSite = new EtatSite();
+                ?>
+			<div id="maintenance" style="background:<?PHP echo $etatSite->getColor(); ?>; width : 100%;
+    margin-top:0%;
+    margin-left: 0%;
+    text-align: center;
+    color:white;
+    box-shadow: 5px 5px 5px black;
+    font-size:0.5em;
+    font-family: comfortaa-regular, Arial, sans-serif;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;"><h1 id="etatSite"><?PHP echo $etatSite->getMessage(); ?></h1></div>
+		<header>
         <p><a href="homePageAdherent.php"><img src="source/images/logo.JPG" alt="logo de l'A2L" title="Se déconnecter"/></a></p>
         <p>Site officiel de l'A2L</p>
         </header>
