@@ -1,6 +1,6 @@
 # Disclaimer : Fermeture du site web
 
-Faute d'utilité, le projet entier comprenant la programmation web, serveur et iOS sera arrêté à compter du 10 juin 2020 à 00h00. L'entièreté du projet reste disponible sur ce GitHub.
+Faute d'utilité, le projet entier comprenant la programmation web, serveur et iOS sera arrêté à compter du 09 juin 2021 à 00h00. L'entièreté du projet reste disponible sur ce GitHub.
 
 Une copie entière de la base de donnée à été effectuée avant la fermture est sauvegardée en local
 
