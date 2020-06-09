@@ -1,4 +1,17 @@
-# A2L_Application 
+# Disclaimer : Fermeture du site web
+
+Faute d'utilité, le projet entier comprenant la programmation web, serveur et iOS sera arrêté à compter du 10 juin 2020 à 00h00. L'entièreté du projet reste disponible sur ce GitHub.
+
+Une copie entière de la base de donnée à été effectuée avant la fermture est sauvegardée en local
+
+Je tiens ainsi à assurer que ce projet m'a beaucoup apporté et qu'il a été réalisé avec grand plaisir.
+
+Toute idée ou transformation de ce projet par un developpeur interne au lycée peut être à l'origine d'un relancement du projet et une remise en disponibilité du site web afin de satfisfaire un objectif précis.
+
+Je reste à la disposition de l'A2L, ou de tout autre développeur interressé.
+
+
+## A2L_Application 
 L'A2L ou Association du Lycée Lurçat se modernise en informatisant ses cartes adhérents. Une application sera déployée sur iOS, et via un site internet afin de permettre aux adhérents d'avoir accès à leur carte et ainsi pouvoir bénéficer d'avantages. Ce code est du site web, d'ores et déjà déployé et disponible pour tous. Elle sera en permamence connectée à un serveur avec lequel elle dialoguera. Le serveur devra gérer les connexions, les privilèges, les informations. Voici le repository du serveur [https://github.com/DevNathan/A2L_BackEnd]. 
 3 types d'utilisateurs pourront utiliser le site : 
 
