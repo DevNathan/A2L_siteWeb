@@ -2,7 +2,7 @@
 
 Faute d'utilité, le projet entier comprenant la programmation web, serveur et iOS sera arrêté à compter du 09 juin 2021 à 00h00. L'entièreté du projet reste disponible sur ce GitHub.
 
-Une copie entière de la base de donnée à été effectuée avant la fermture est sauvegardée en local
+Une copie entière de la base de donnée sera effectuée avant la fermture et sera sauvegardée et chiffrée en local
 
 Je tiens ainsi à assurer que ce projet m'a beaucoup apporté et qu'il a été réalisé avec grand plaisir.
 
