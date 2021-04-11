@@ -1,4 +1,4 @@
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0) ![Codacy Security Scan](https://github.com/DevNathan/A2L_siteWeb/workflows/Codacy%20Security%20Scan/badge.svg) [![Website a2l-jl.com](https://img.shields.io/website-up-down-green-red/https/naereen.github.io.svg)](https://a2l-jl.com)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 # Disclaimer : Fermeture du site web
 
 Faute d'utilité, le projet entier comprenant la programmation web, serveur et iOS sera arrêté à compter du 09 juin 2021 à 00h00. L'entièreté du projet reste disponible sur ce GitHub.
